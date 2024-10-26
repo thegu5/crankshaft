@@ -131,7 +131,7 @@ ipcRenderer.on('injectClientCSS', (_event, _userPrefs: UserPrefs, version: strin
 		const uiBaseElement = document.getElementById(splashMountElementID);
 		if (uiBaseElement === null) throw `Krunker didn't create #${splashMountElementID}`;
 
-		const splashBackground = createElement('div', {class: ['crankshaft-loading-background']});
+		const splashBackground = createElement('div', { class: ['crankshaft-loading-background'] });
 		if (immersiveSplash) splashBackground.classList.add('immersive');
 		const logoSVG = createElement('svg', {
 			id: 'crankshaft-logo-holder',
@@ -153,7 +153,7 @@ ipcRenderer.on('injectClientCSS', (_event, _userPrefs: UserPrefs, version: strin
 		logoSVG.appendChild(createElement('div', { class: 'crankshaft-holder-l', id: 'loadInfoLHolder', text: `v${version}` }));
 		logoSVG.appendChild(createElement('div', { class: 'crankshaft-holder-r', id: 'loadInfoRHolder', text: 'Client by KraXen72' }));
 		logoSVG.appendChild(createElement('div', { class: 'crankshaft-holder-splash', id: 'loadInfoSplashHolder', text: splashFlavor }));
-		logoSVG.appendChild(createElement('div', { class: 'crankshaft-holder-loadingindicator', id: 'loadInfoLoadingIndicator', text: `LOADING...` }));
+		logoSVG.appendChild(createElement('div', { class: 'crankshaft-holder-loadingindicator', id: 'loadInfoLoadingIndicator', text: 'LOADING...' }));
 		splashBackground.appendChild(logoSVG);
 
 		const observerConfig = { attributes: true, childList: true, subtree: true };
@@ -196,6 +196,7 @@ export const regionMappings = [
 	{ name: 'London (hidden)', id: '', code: 'LON', offset: 1 },
 	{ name: 'Seattle (hidden)', id: '', code: 'STL', offset: -7 },
 	{ name: 'Mexico (hidden)', id: '', code: 'MX', offset: -6 },
+
 	// FRVR 'Super Secret' testing server
 	{ name: 'EU Super Secret Servers', id: 'sss', code: 'FRA', offset: 2 }
 ];
@@ -276,8 +277,8 @@ function patchSettings(_userPrefs: UserPrefs) {
 					try {
 						opt.textContent += ` ${getTimezoneByRegionKey('id', opt.value)}`;
 					} catch (error) {
-						strippedConsole.error("Error getting timezone for: ", opt);
-						opt.textContent += ` [??:??]`;
+						strippedConsole.error('Error getting timezone for: ', opt);
+						opt.textContent += ' [??:??]';
 					}
 				}
 

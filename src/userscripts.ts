@@ -104,18 +104,16 @@ class Userscript implements IUserscriptInstance {
 			if (typeof exported !== 'undefined') {
 				// more stuff to be added here later
 				if ('unload' in exported) this.unload = exported.unload;
-				if ('settings' in exported) this.settings = exported.settings
+				if ('settings' in exported) this.settings = exported.settings;
 			}
 
 			// Apply custom settings if they exist
 			if (Object.keys(this.settings).length > 0 && existsSync(this.settingsPath)) {
 				try {
-					var settingsJSON: {[key: string]: UserPrefValue} = JSON.parse(readFileSync(this.settingsPath, 'utf-8'));
+					const settingsJSON: { [key: string]: UserPrefValue } = JSON.parse(readFileSync(this.settingsPath, 'utf-8'));
 					Object.keys(settingsJSON).forEach(settingKey => {
-						if (customSettingSavedJSONIsNotMalformed(settingKey, this.settings, settingsJSON)) {
-							this.settings[settingKey].changed(settingsJSON[settingKey])
-						}
-					})
+						if (customSettingSavedJSONIsNotMalformed(settingKey, this.settings, settingsJSON)) this.settings[settingKey].changed(settingsJSON[settingKey]);
+					});
 				} catch (err) { // Preferences for script are probably corrupted.
 				}
 			}
@@ -134,7 +132,7 @@ class Userscript implements IUserscriptInstance {
 ipcRenderer.on('main_initializes_userscripts', (event, recieved_userscript_paths: { userscriptsPath: string, userscriptPrefsPath: string }) => {
 	su.userscriptsPath = recieved_userscript_paths.userscriptsPath;
 	su.userscriptTrackerPath = pathResolve(su.userscriptsPath, 'tracker.json');
-	su.userscriptPrefsPath = recieved_userscript_paths.userscriptPrefsPath
+	su.userscriptPrefsPath = recieved_userscript_paths.userscriptPrefsPath;
 
 	// init the userscripts (read, map and set up tracker)
 	su.userscripts = readdirSync(su.userscriptsPath, { withFileTypes: true })

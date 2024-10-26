@@ -11,7 +11,9 @@ ignorePatterns:
   - app/
   - node_modules/
   - build/
-  - esbuilder.js # this is just a hacked together dev building file that uses esbuild. not even in ts
+  - esbuild.js # this is just a hacked together dev building file that uses esbuild. not even in ts
+  - forge.config.js
+  - assets/
 
 extends:
   - raven

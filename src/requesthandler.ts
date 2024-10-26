@@ -1,7 +1,6 @@
 import { readdirSync, existsSync, mkdirSync } from 'fs';
 import { join as pathJoin } from 'path';
 
-import { Filter } from 'electron';
 import { readFileSync } from 'original-fs';
 
 // TODO: conditional import (?)
@@ -25,7 +24,7 @@ export default class {
 
 	private customFiltersEnabled: boolean;
 
-	private filter: Filter = { urls: [] };
+	private filter: { urls: string[] } = { urls: [] };
 
 	private swapUrls: string[] = [];
 
@@ -78,6 +77,7 @@ export default class {
 				if (swapResourse) {
 					const path = new URL(details.url).pathname;
 					const resultPath = path.startsWith('/assets/') ? pathJoin(this.swapDir, path.substring(7)) : pathJoin(this.swapDir, path);
+
 					// Redirect to the local resource.
 					return callback({ redirectURL: `krunker-resource-swapper:/${resultPath}` });
 				}

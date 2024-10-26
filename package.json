@@ -28,20 +28,20 @@
 		"url": "https://github.com/KraXen72/crankshaft.git"
 	},
 	"devDependencies": {
-		"concurrently": "^8.2.2",
-		"conventional-changelog-cli": "^4.1.0",
-		"electron": "10.4.7",
-		"electron-builder": "23.6.0",
-		"esbuild": "^0.20.0",
-		"eslint": "^8.56.0",
-		"eslint-config-airbnb-typescript": "^17.1.0",
+		"concurrently": "^9.0.1",
+		"conventional-changelog-cli": "^5.0.0",
+		"electron": "^33.0.2",
+		"electron-builder": "25.1.8",
+		"esbuild": "^0.24.0",
+		"eslint": "^9.13.0",
+		"eslint-config-airbnb-typescript": "^18.0.0",
 		"eslint-config-raven": "^1.0.3",
-		"eslint-plugin-import": "^2.29.1",
-		"typescript": "^5.3.3"
+		"eslint-plugin-import": "^2.31.0",
+		"typescript": "^5.6.3"
 	},
 	"dependencies": {
-		"compare-versions": "^6.1.0",
-		"dayjs": "^1.11.10",
+		"compare-versions": "^6.1.1",
+		"dayjs": "^1.11.13",
 		"discord-rpc": "^4.0.1",
 		"urlpattern-polyfill": "^10.0.0",
 		"userscript-meta": "^1.0.1"
